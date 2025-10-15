@@ -3,17 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js"></script>
+
     <title>HackFinder</title>
 </head>
+<body>
 
-<section class="header", id="animated-background">
-    <h1>Welcome To HackFinder</h1>
-    <p>Your one-stop to finding hackathons near you (online or in-person)</p>
-</section>
-
-<section class="search-bar">
-    <input type="text" placeholder="Type your location...">
-    <input type="text" placeholder="Search for hackathons...">
+    <section class="header", id="animated-background">
+        <h1>Welcome To HackFinder</h1>
+        <p>Your one-stop to finding hackathons near you (online or in-person)</p>
+    </section>
+    
+    <section class="search-bar">
+        <input type="text" placeholder="Type your location...">
+        <input type="text" placeholder="Search for hackathons...">
     <button type="submit">Search</button>
 </section>
 
@@ -24,10 +29,10 @@
         <option value="online">Online</option>
         <option value="in-person">In-Person</option>
     </select>
-        
+    
     <label for="date">Date</label>
     <input type="date" id="date" name="date" title="Filter by date">
-
+    
     <fieldset>
         <legend>Interest Tags</legend>
         <label for="tag-ai">
@@ -36,17 +41,35 @@
         <label for="tag-web">
             <input type="checkbox" id="tag-web" name="tags" value="web" title="Web Development tag"> Web Development
         </label>
+        <label for="beginner-friendly">
+            <input type="checkbox" id="beginner-friendly" value="bf", name="tags", title="Beginner Friendly"> Beginner Friendly
+        </label>
+        
+        <label for="No/Low Code">
+            <input type="checkbox" id="No/Low Code" value="nlc", name="tags", title="No/Low Code"> No/Low Code
+        </label>
+        <label for="hardware">
+            <input type="checkbox" id="hardware" value="hw", name="tags", title="Hardware tag"> Hardware
+        </label>
     </fieldset>
-
-    <button type="submit">Apply Filters</button>
 </aside>
 
+<button type="submit">Apply Filters</button>
+
+<div class="results">
+    <h2 id="results-header">Hackathon Finder</h2>
+    <div class="result">
+        ...
+    </div>
+</div>
+
+
+</body>
 
 <footer>
     <p>&copy; 2025 HackFinder. All rights reserved.</p>
-</footer>
-
-<body>
     
-</body>
+</footer>
+<script src="script.js"></script>
+
 </html>
