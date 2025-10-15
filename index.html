@@ -1,80 +1,171 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.css" rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.css"
+      rel="stylesheet"
+    />
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js"></script>
 
     <title>HackFinder</title>
-</head>
-<body class="bg-white-100 text-gray-800 font-sans" >
-
-    <section class="header p-4 m-4 border-2 border-dashed rounded-lg bg-gray-50">
-        <h1 class="text-2xl p-10 mb-2 font-bold text-blue-600 text-center border-2 border-dashed">Welcome To HackFinder</h1>
-        <p class="font-bold w-full p-4 h-10 text-black-700 ">Your one-stop to finding hackathons near you (online or in-person)</p>
+  </head>
+  <body class="bg-white-100 text-gray-800 font-sans">
+    <section
+      class="header p-12 m-4 border-2 border-dashed rounded-lg bg-gray-50"
+    >
+      <h1 class="text-2xl p-10 mb-2 font-bold text-blue-600 text-center">
+        Welcome To HackFinder
+      </h1>
+      <p class="font-bold w-full p-4 h-10 text-black-700 text-center">
+        Your one-stop to finding hackathons near you (online or in-person)
+      </p>
     </section>
-    
-    <section class="section class p-4 flex justify-center gap-4 items-center bg-gray-200 rounded-lg shadow-md m-4">
-        <input type="text" placeholder="Type your location...">
-        <input type="text" placeholder="Search for hackathons...">
-    <button class="bg-blue-400 border-2 rounded shadow" type="submit">Search</button>
-</section>
 
-<aside class="filters p-4 m-4 border-2 border-dashed rounded-lg bg-gray-50">
-    <h2>Filters</h2>
-    <label for="location">Location</label>
-    <select id="location" name="location" title="Select location">
-        <option value="online">Online</option>
-        <option value="in-person">In-Person</option>
-    </select>
-    
-    <label for="date">Date</label>
-    <input type="date" id="date" name="date" title="Filter by date">
-    
-    <fieldset>
-        <legend>Interest Tags</legend>
-        <label for="tag-ai">
-            <input type="checkbox" id="tag-ai" name="tags" value="ai" title="AI tag"> AI
-        </label>
-        <label for="tag-web">
-            <input type="checkbox" id="tag-web" name="tags" value="web" title="Web Development tag"> Web Development
-        </label>
-        <label for="beginner-friendly">
-            <input type="checkbox" id="beginner-friendly" value="bf", name="tags", title="Beginner Friendly"> Beginner Friendly
-        </label>
-        
-        <label for="No/Low Code">
-            <input type="checkbox" id="No/Low Code" value="nlc", name="tags", title="No/Low Code"> No/Low Code
-        </label>
-        <label for="hardware">
-            <input type="checkbox" id="hardware" value="hw", name="tags", title="Hardware tag"> Hardware
-        </label>
-    </fieldset>
-</aside>
+    <section
+      class="section p-4 flex justify-center gap-4 items-center bg-gray-200 rounded-lg shadow-md m-4"
+    >
+      <label class="sr-only" for="loc-input">Location</label>
+      <input
+        id="loc-input"
+        type="text"
+        placeholder="Type your location..."
+        class="px-3 py-2 border rounded"
+      />
+      <label
+        for="default-search"
+        class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
+        >Search</label
+      >
+      <input
+        type="search"
+        id="default-search"
+        class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        placeholder="Search Mockups, Logos..."
+        required
+      />
 
-<button type="submit" 
-  class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none 
-  focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
-  Apply Filters
-</button>
+      <button
+        type="button"
+        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+      >
+        Search
+      </button>
+    </section>
 
+    <main class="flex flex-col md:flex-row gap-6 m-4">
+      <div class="flex-2 p-4 border rounded-lg bg-white shadow">
+        <aside
+          class="filters p-4 m-4 border-2 border-dashed rounded-lg bg-gray-50"
+        >
+          <h2 class="text-xl font-semibold mb-2 text-blue-700">Filters</h2>
+          <form>
+            <label for="location">Location</label>
+            <select
+              id="location"
+              name="location"
+              title="Select location"
+              class="block w-full mb-2"
+            >
+              <option value="online">Online</option>
+              <option value="in-person">In-Person</option>
+            </select>
 
-<div class="results">
-    <h2 id="results-header">Hackathon Finder</h2>
-    <div class="result">
-        ...
-    </div>
-</div>
+            <label for="date">Date</label>
+            <input
+              type="date"
+              id="date"
+              name="date"
+              title="Filter by date"
+              class="block mb-2"
+            />
 
+            <fieldset class="mb-2">
+              <legend class="font-medium">Interest Tags</legend>
+              <div class="space-y-3 mt-2">
+                <label class="flex items-center">
+                  <input
+                    id="tag-ai"
+                    name="tags"
+                    type="checkbox"
+                    value="ai"
+                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 focus:ring-2"
+                  />
+                  <span class="ms-2 text-sm font-medium text-gray-900">AI/ML</span>
+                </label>
 
-</body>
+                <label class="flex items-center">
+                  <input
+                    id="tag-beginner"
+                    name="tags"
+                    type="checkbox"
+                    value="beginner"
+                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 focus:ring-2"
+                  />
+                  <span class="ms-2 text-sm font-medium text-gray-900">Beginner-Friendly</span>
+                </label>
 
-<footer>
-    <p>&copy; 2025 HackFinder. All rights reserved.</p>
-    
-</footer>
-<script src="script.js"></script>
+                <label class="flex items-center">
+                  <input
+                    id="tag-nocode"
+                    name="tags"
+                    type="checkbox"
+                    value="no-code"
+                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 focus:ring-2"
+                  />
+                  <span class="ms-2 text-sm font-medium text-gray-900">Low/No Code</span>
+                </label>
 
+                <label class="flex items-center">
+                  <input
+                    id="tag-hardware"
+                    name="tags"
+                    type="checkbox"
+                    value="hardware"
+                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 focus:ring-2"
+                  />
+                  <span class="ms-2 text-sm font-medium text-gray-900">Hardware</span>
+                </label>
+
+                <label class="flex items-center">
+                  <input
+                    id="tag-blockchain"
+                    name="tags"
+                    type="checkbox"
+                    value="blockchain"
+                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 focus:ring-2"
+                  />
+                  <span class="ms-2 text-sm font-medium text-gray-900">Blockchain</span>
+                </label>
+              </div>
+            </fieldset>
+
+            <button
+              type="submit"
+              class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+            >
+              Apply Filters
+            </button>
+          </form>
+        </aside>
+
+        <div class="results p-4">
+          <h2 id="results-header" class="text-lg font-semibold">
+            Hackathon Finder
+          </h2>
+          <div class="result mt-2">
+            <!-- Results will be injected here -->
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="p-4 text-center">
+      <p>&copy; 2025 HackFinder. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
 </html>
