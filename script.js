@@ -77,3 +77,28 @@ form.addEventListener("submit", (e) => {
     });
     displayHackathons(filtered);
 })
+
+const resetButton = document.getElementById("reset");
+resetButton.addEventListener("click", () => {
+  form.reset();
+  displayHackathons(hackathons);
+});
+
+function fetchHackathons() {
+  fetch("https://hackathons.hackclub.com/api/events/upcoming")
+  .then(res => res.json())
+  .then(data => {
+    console.log("Hackathons:", data);
+    // store data in a variable for filtering
+  })
+  .catch(err => console.error("API fetch error:", err));
+
+  const userLocation = "New York";
+
+  const filtered = data.filter(h =>
+  h.city?.toLowerCase().includes(userLocation.toLowerCase()) ||
+  h.state?.toLowerCase().includes(userLocation.toLowerCase()) ||
+  h.country?.toLowerCase().includes(userLocation.toLowerCase())
+);
+
+}
