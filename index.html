@@ -1,171 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link
-      href="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.css"
-      rel="stylesheet"
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link
+    href="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.css"
+    rel="stylesheet"
+  />
+  <script src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js"></script>
+  <title>HackFinder</title>
+</head>
+
+<body class="bg-gray-100 text-gray-800 font-sans">
+
+  <!-- Header -->
+  <section class="header text-center py-10 bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-md">
+    <h1 class="text-4xl font-bold mb-2">Welcome To HackFinder</h1>
+    <p class="text-lg">Your one-stop to finding hackathons near you (online or in-person)</p>
+  </section>
+
+  <!-- Search Bar -->
+  <section class="search-bar flex flex-col md:flex-row justify-center items-center gap-3 py-6">
+    <input
+      type="text"
+      placeholder="Type your location..."
+      class="border rounded-md p-2 w-64 focus:ring focus:ring-blue-300"
     />
-    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js"></script>
-
-    <title>HackFinder</title>
-  </head>
-  <body class="bg-white-100 text-gray-800 font-sans">
-    <section
-      class="header p-12 m-4 border-2 border-dashed rounded-lg bg-gray-50"
+    <input
+      type="text"
+      placeholder="Search for hackathons..."
+      class="border rounded-md p-2 w-64 focus:ring focus:ring-blue-300"
+    />
+    <button
+      type="submit"
+      class="bg-blue-500 text-white px-4 py-2 rounded-md shadow hover:bg-blue-600 transition"
     >
-      <h1 class="text-2xl p-10 mb-2 font-bold text-blue-600 text-center">
-        Welcome To HackFinder
-      </h1>
-      <p class="font-bold w-full p-4 h-10 text-black-700 text-center">
-        Your one-stop to finding hackathons near you (online or in-person)
-      </p>
-    </section>
+      Search
+    </button>
+  </section>
 
-    <section
-      class="section p-4 flex justify-center gap-4 items-center bg-gray-200 rounded-lg shadow-md m-4"
-    >
-      <label class="sr-only" for="loc-input">Location</label>
-      <input
-        id="loc-input"
-        type="text"
-        placeholder="Type your location..."
-        class="px-3 py-2 border rounded"
-      />
-      <label
-        for="default-search"
-        class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
-        >Search</label
-      >
-      <input
-        type="search"
-        id="default-search"
-        class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-        placeholder="Search Mockups, Logos..."
-        required
-      />
+  <!-- Main Layout -->
+  <main class="flex flex-col md:flex-row gap-6 m-6">
 
-      <button
-        type="button"
-        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-      >
-        Search
-      </button>
-    </section>
+    <!-- Filters Section -->
+    <aside class="filters md:w-1/3 p-5 border-2 border-dashed rounded-lg bg-white shadow-sm">
+      <h2 class="text-2xl font-semibold mb-4 text-blue-700">Filters</h2>
+      
+      <form class="space-y-4">
+        <!-- Location -->
+        <div>
+          <label for="location" class="block font-medium mb-1">Location</label>
+          <select id="location" name="location" class="border rounded-md p-2 w-full">
+            <option value="online">Online</option>
+            <option value="in-person">In-Person</option>
+          </select>
+        </div>
 
-    <main class="flex flex-col md:flex-row gap-6 m-4">
-      <div class="flex-2 p-4 border rounded-lg bg-white shadow">
-        <aside
-          class="filters p-4 m-4 border-2 border-dashed rounded-lg bg-gray-50"
-        >
-          <h2 class="text-xl font-semibold mb-2 text-blue-700">Filters</h2>
-          <form>
-            <label for="location">Location</label>
-            <select
-              id="location"
-              name="location"
-              title="Select location"
-              class="block w-full mb-2"
-            >
-              <option value="online">Online</option>
-              <option value="in-person">In-Person</option>
-            </select>
+        <!-- Date -->
+        <div>
+          <label for="date" class="block font-medium mb-1">Date</label>
+          <input type="date" id="date" name="date" class="border rounded-md p-2 w-full" />
+        </div>
 
-            <label for="date">Date</label>
-            <input
-              type="date"
-              id="date"
-              name="date"
-              title="Filter by date"
-              class="block mb-2"
-            />
+        <!-- Tags -->
+        <fieldset class="border rounded-md p-3">
+          <legend class="font-semibold text-gray-700 mb-2">Interest Tags</legend>
 
-            <fieldset class="mb-2">
-              <legend class="font-medium">Interest Tags</legend>
-              <div class="space-y-3 mt-2">
-                <label class="flex items-center">
-                  <input
-                    id="tag-ai"
-                    name="tags"
-                    type="checkbox"
-                    value="ai"
-                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 focus:ring-2"
-                  />
-                  <span class="ms-2 text-sm font-medium text-gray-900">AI/ML</span>
-                </label>
-
-                <label class="flex items-center">
-                  <input
-                    id="tag-beginner"
-                    name="tags"
-                    type="checkbox"
-                    value="beginner"
-                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 focus:ring-2"
-                  />
-                  <span class="ms-2 text-sm font-medium text-gray-900">Beginner-Friendly</span>
-                </label>
-
-                <label class="flex items-center">
-                  <input
-                    id="tag-nocode"
-                    name="tags"
-                    type="checkbox"
-                    value="no-code"
-                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 focus:ring-2"
-                  />
-                  <span class="ms-2 text-sm font-medium text-gray-900">Low/No Code</span>
-                </label>
-
-                <label class="flex items-center">
-                  <input
-                    id="tag-hardware"
-                    name="tags"
-                    type="checkbox"
-                    value="hardware"
-                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 focus:ring-2"
-                  />
-                  <span class="ms-2 text-sm font-medium text-gray-900">Hardware</span>
-                </label>
-
-                <label class="flex items-center">
-                  <input
-                    id="tag-blockchain"
-                    name="tags"
-                    type="checkbox"
-                    value="blockchain"
-                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 focus:ring-2"
-                  />
-                  <span class="ms-2 text-sm font-medium text-gray-900">Blockchain</span>
-                </label>
-              </div>
-            </fieldset>
-
-            <button
-              type="submit"
-              class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
-            >
-              Apply Filters
-            </button>
-          </form>
-        </aside>
-
-        <div class="results p-4">
-          <h2 id="results-header" class="text-lg font-semibold">
-            Hackathon Finder
-          </h2>
-          <div class="result mt-2">
-            <!-- Results will be injected here -->
+          <div class="flex flex-col gap-2">
+            <label><input type="checkbox" value="ai" /> AI</label>
+            <label><input type="checkbox" value="web" /> Web Development</label>
+            <label><input type="checkbox" value="bf" /> Beginner Friendly</label>
+            <label><input type="checkbox" value="nlc" /> No/Low Code</label>
+            <label><input type="checkbox" value="hw" /> Hardware</label>
           </div>
+        </fieldset>
+
+        <button
+          type="submit"
+          class="bg-blue-500 text-white w-full py-2 rounded-md shadow hover:bg-blue-600 transition"
+        >
+          Apply Filters
+        </button>
+      </form>
+    </aside>
+
+    <!-- Results Section -->
+    <section class="results md:w-2/3 p-5 border rounded-lg bg-white shadow">
+      <h2 id="results-header" class="text-2xl font-semibold mb-4 text-blue-700">
+        Hackathon Finder
+      </h2>
+      <div id="results-container" class="space-y-4">
+        <!-- Example Hackathon Card -->
+        <div class="p-4 border rounded-lg shadow-sm hover:shadow-md transition">
+          <h3 class="text-lg font-bold text-blue-600">Hack the Future 2025</h3>
+          <p class="text-sm text-gray-600">📍 Online • 🗓️ Jan 12-14, 2025</p>
+          <p class="mt-2 text-gray-700">
+            Join this global hackathon focused on AI innovation and creative coding projects.
+          </p>
+        </div>
+
+        <div class="p-4 border rounded-lg shadow-sm hover:shadow-md transition">
+          <h3 class="text-lg font-bold text-blue-600">CodeSprint NYC</h3>
+          <p class="text-sm text-gray-600">📍 New York, NY • 🗓️ Feb 8-10, 2025</p>
+          <p class="mt-2 text-gray-700">
+            A fast-paced in-person hackathon bringing together students and pros from all over.
+          </p>
         </div>
       </div>
-    </main>
+    </section>
 
-    <footer class="p-4 text-center">
-      <p>&copy; 2025 HackFinder. All rights reserved.</p>
-    </footer>
+  </main>
 
-    <script src="script.js"></script>
-  </body>
+  <!-- Footer -->
+  <footer class="text-center py-4 bg-gray-200 mt-10">
+    <p>&copy; 2025 HackFinder. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
 </html>
